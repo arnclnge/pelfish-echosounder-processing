@@ -22,7 +22,7 @@ week_interval <- seq(from= start_date,
                  by = interval) %>% append(end_date) #check that date cut-offs are correct
 
 timestamp_list <- list()
-timestamp_df <- data.frame(timestamp = as.POSIXct(NA, tz=UTC))
+timestamp_df <- data.frame(timestamp = as.POSIXct(NA, tz='UTC'))
 
 for (n in 1:(length(week_interval)-1)){
 
@@ -38,7 +38,7 @@ for (n in 1:(length(week_interval)-1)){
         timestamp_sec <- seq(from= timestamp_min[s], 
                              length.out = 60,
                              by = "secs")
-        timestamp_list <- append(timestamp_list, timestamp_sec)
+        timestamp_list <- append(timestamp_list, list(timestamp_sec=timestamp_sec))
       }
     }
     
